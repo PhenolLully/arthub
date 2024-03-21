@@ -1,5 +1,6 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
+const cloudinary = require('cloudinary').v2;
 const typeDefs = require('./schema/typeDefs');
 const resolvers = require('./schema/resolvers');
 const connectDB = require('./config/db');
