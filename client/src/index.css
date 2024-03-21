@@ -11,7 +11,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -23,29 +22,69 @@ a:hover {
   color: #535bf2;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  
+}
+.nav-link {
+  position: relative;
+  color: white !important; /* Set the text color */
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Set the line height */
+  background-color: white; /* Set the line color */
+  transform: scaleX(0); /* Initially hide the line */
+  transition: transform 0.3s ease; /* Add a smooth transition */
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1); /* Show the line on hover */
+}
+
 body {
   margin: 0;
-  display: flex;
-
+  
+  color: white;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #181d2a;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color:#efd604;
+  text-align: center;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+h2 {
+  font-size:larger;
+  color:#2e74b7;
+  text-align: center;
+
+}
+h3 {
+  font-size: 1.5em;
+  color: #95d3e9
+  ;
+  text-align: center;
+
 }
 button:hover {
   border-color: #646cff;
@@ -54,6 +93,30 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+
+/* Add spacing to headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Add spacing to paragraphs */
+p {
+  margin: 50px;
+}
+
+/* Add spacing to buttons */
+button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Add spacing to navbar */
+.navbar {
+  margin-bottom: 20px;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
