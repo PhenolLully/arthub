@@ -1,34 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Home from './components/Home/Home'; // Import the Home component
+import Profile from './components/Profile/Profile'; // Import the Profile component
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [page, setPage] = useState('home');
+
+  const renderPage = () => {
+    switch (page) {
+      case 'home':
+        return <Home />;
+      case 'profile':
+        return <Profile />;
+      default:
+        return <Home />;
+    }
+  };
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+    <>
+      <Navbar bg="dark" variant="dark" className="text-center">
+        <Container>
+          <Navbar.Brand>ArtHub</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link onClick={() => setPage('home')}>Home</Nav.Link>
+            <Nav.Link onClick={() => setPage('profile')}>Profile</Nav.Link>
           </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        </Container>
+      </Navbar>
+      
+      {renderPage()} {/* Render the current page based on the state */}
+      
+      <footer>
+        {/* Add your footer content here */}
+      </footer>
+    </>
   );
 }
 
