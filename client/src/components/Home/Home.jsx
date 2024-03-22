@@ -1,12 +1,10 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import { MDBBtn, MDBIcon } from 'mdb-react-ui-kit';
 
-function Home() {
+export default function Post() {
   return (
-    <>
-      <Button variant="primary">Primary</Button>{' '}
-    </>
+    <MDBBtn size='lg' floating style={{ backgroundColor: '#ac2bac' }} href='#'>
+      <MDBIcon fab icon='instagram' />
+    </MDBBtn>
   );
 }
-
-export default Home;
