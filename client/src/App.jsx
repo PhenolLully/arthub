@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Home from './components/Home/Home'; // Import the Home component
-import Profile from './components/Pages/Profile'; // Import the Profile component
+import Profile from './components/Profile/Profile'; // Import the Profile component
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
