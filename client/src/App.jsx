@@ -32,7 +32,6 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-      
       {renderPage()} {/* Render the current page based on the state */}
       
       <footer>
