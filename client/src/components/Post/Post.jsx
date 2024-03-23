@@ -3,7 +3,7 @@ import react from 'react';
 const Post = () => {
     return (
         <div>
-            <h1>Post Page</h1>
+            <h1>Submit a Post!</h1>
             {/* Add your post information here */}
         </div>
     );
