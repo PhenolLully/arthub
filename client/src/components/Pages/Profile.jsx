@@ -30,7 +30,7 @@ export default function ProfilePage() {
   const [favoriteMusic, setFavoriteMusic] = useState("");
   const [hobbies, setHobbies] = useState("");
   return (
-    <section style={{ backgroundColor: '#eee' }}>
+    <section>
       <MDBContainer className="py-5">
         {/* <MDBRow>
           <MDBCol>
@@ -80,72 +80,72 @@ export default function ProfilePage() {
                     </label>
                   </div>
                   <div>
-                  <label>Country: {""}
-                    {isEditing ? (
-                      <input
-                        value={country}
-                        onChange={(e) => {
-                          setCountry(e.target.value);
-                        }} />
-                    ) : (
-                      <b>{country}</b>
-                    )}
-                  </label>
+                    <label>Country: {""}
+                      {isEditing ? (
+                        <input
+                          value={country}
+                          onChange={(e) => {
+                            setCountry(e.target.value);
+                          }} />
+                      ) : (
+                        <b>{country}</b>
+                      )}
+                    </label>
                   </div>
                   <div>
-                  <label>Birthday: {""}
-                    {isEditing ? (
-                      <input
-                        value={birthday}
-                        onChange={(e) => {
-                          setBirthday(e.target.value);
-                        }} />
-                    ) : (
-                      <b>{birthday}</b>
-                    )}
-                  </label>
+                    <label>Birthday: {""}
+                      {isEditing ? (
+                        <input
+                          value={birthday}
+                          onChange={(e) => {
+                            setBirthday(e.target.value);
+                          }} />
+                      ) : (
+                        <b>{birthday}</b>
+                      )}
+                    </label>
                   </div>
                   <div>
-                  <label>Favorite Movies: {""}
-                    {isEditing ? (
-                      <input
-                        value={favoriteMovies}
-                        onChange={(e) => {
-                          setFavoriteMovies(e.target.value);
-                        }} />
-                    ) : (
-                      <b>{favoriteMovies}</b>
-                    )}
-                  </label>
+                    <label>Favorite Movies: {""}
+                      {isEditing ? (
+                        <input
+                          value={favoriteMovies}
+                          onChange={(e) => {
+                            setFavoriteMovies(e.target.value);
+                          }} />
+                      ) : (
+                        <b>{favoriteMovies}</b>
+                      )}
+                    </label>
                   </div>
                   <div>
-                  <label>Favorite Music: {""}
-                    {isEditing ? (
-                      <input
-                        value={favoriteMusic}
-                        onChange={(e) => {
-                          setFavoriteMusic(e.target.value);
-                        }} />
-                    ) : (
-                      <b>{favoriteMusic}</b>
-                    )}
-                  </label>
+                    <label>Favorite Music: {""}
+                      {isEditing ? (
+                        <input
+                          value={favoriteMusic}
+                          onChange={(e) => {
+                            setFavoriteMusic(e.target.value);
+                          }} />
+                      ) : (
+                        <b>{favoriteMusic}</b>
+                      )}
+                    </label>
                   </div>
                   <div>
-                  <label>Hobbies: {""}
-                    {isEditing ? (
-                      <input
-                        value={hobbies}
-                        onChange={(e) => {
-                          setHobbies(e.target.value);
-                        }} />
-                    ) : (
-                      <b>{hobbies}</b>
-                    )}
-                  </label>
+                    <label>Hobbies: {""}
+                      {isEditing ? (
+                        <input
+                          value={hobbies}
+                          onChange={(e) => {
+                            setHobbies(e.target.value);
+                          }} />
+                      ) : (
+                        <b>{hobbies}</b>
+                      )}
+                    </label>
                   </div>
                   <div>
-                  <MDBBtn outline className="ms-1" type="submit">{isEditing ? "Update" : "Edit"} Profile</MDBBtn>
+                    <MDBBtn disableRipple outline className="ms-1" type="submit">{isEditing ? "Update" : "Edit"} Profile</MDBBtn>
                   </div>
                 </form>
               </MDBCardBody>
@@ -153,7 +153,7 @@ export default function ProfilePage() {
 
             <MDBCard className="mb-4 mb-lg-0">
               <MDBCardBody className="p-0">
-                <MDBListGroup flush className="rounded-3">
+                <MDBListGroup flush="true" className="rounded-3">
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon fas icon="globe fa-lg text-warning" />
                     <MDBCardText>https://mdbootstrap.com</MDBCardText>
@@ -228,69 +228,40 @@ export default function ProfilePage() {
               </MDBCardBody>
             </MDBCard>
 
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <MDBCardText style={{ color: '#111111' }}className="lead fw-normal mb-0">Recent Art</MDBCardText>
+              <MDBCardText className="mb-0"><a href="#!" className="text-muted">Show all</a></MDBCardText>
+            </div>
             <MDBRow>
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
-                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-                  </MDBCardBody>
-                </MDBCard>
+              <MDBCol className="mb-2">
+                <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                  alt="image 1" className="w-100 rounded-3" />
               </MDBCol>
-
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
-                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-                  </MDBCardBody>
-                </MDBCard>
+              <MDBCol className="mb-2">
+                <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                  alt="image 1" className="w-100 rounded-3" />
+              </MDBCol>
+              <MDBCol className="mb-2">
+                <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                  alt="image 1" className="w-100 rounded-3" />
+              </MDBCol>
+            </MDBRow>
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <MDBCardText style={{ color: '#111111' }}className="lead fw-normal mb-0 ">Recent Favorites</MDBCardText>
+              <MDBCardText className="mb-0"><a href="#!" className="text-muted">Show all</a></MDBCardText>
+            </div>
+            <MDBRow>
+              <MDBCol className="mb-2">
+                <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                  alt="image 1" className="w-100 rounded-3" />
+              </MDBCol>
+              <MDBCol className="mb-2">
+                <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                  alt="image 1" className="w-100 rounded-3" />
+              </MDBCol>
+              <MDBCol className="mb-2">
+                <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                  alt="image 1" className="w-100 rounded-3" />
               </MDBCol>
             </MDBRow>
           </MDBCol>
