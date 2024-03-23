@@ -63,11 +63,11 @@ export default function ProfilePage() {
                   <MDBBtn outline className="ms-1">Message</MDBBtn>
                 </div>
                 <form onSubmit={(e) => {
-                  e.prevemtDefault();
+                  e.preventDefault();
                   setIsEditing(!isEditing);
                 }}>
                   <div>
-                    <label>Name:{""}
+                    <label>Name: {""}
                       {isEditing ? (
                         <input
                           value={name}
@@ -80,7 +80,7 @@ export default function ProfilePage() {
                     </label>
                   </div>
                   <div>
-                  <label>Country:{""}
+                  <label>Country: {""}
                     {isEditing ? (
                       <input
                         value={country}
@@ -93,7 +93,7 @@ export default function ProfilePage() {
                   </label>
                   </div>
                   <div>
-                  <label>Birthday:{""}
+                  <label>Birthday: {""}
                     {isEditing ? (
                       <input
                         value={birthday}
@@ -106,7 +106,7 @@ export default function ProfilePage() {
                   </label>
                   </div>
                   <div>
-                  <label>Favorite Movies:{""}
+                  <label>Favorite Movies: {""}
                     {isEditing ? (
                       <input
                         value={favoriteMovies}
@@ -119,7 +119,7 @@ export default function ProfilePage() {
                   </label>
                   </div>
                   <div>
-                  <label>Favorite Music:{""}
+                  <label>Favorite Music: {""}
                     {isEditing ? (
                       <input
                         value={favoriteMusic}
@@ -132,7 +132,7 @@ export default function ProfilePage() {
                   </label>
                   </div>
                   <div>
-                  <label>Hobbies:{""}
+                  <label>Hobbies: {""}
                     {isEditing ? (
                       <input
                         value={hobbies}
