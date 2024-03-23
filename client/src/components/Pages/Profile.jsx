@@ -1,4 +1,7 @@
 // SOME OF THIS IS A TEMPLATE AND WILL BE UPDATED. I have added my own code as well!
+import React, { useState } from 'react';
+
+import TextTruncate from '../TextTruncate/index'
 
 import {
   MDBContainer,
@@ -19,10 +22,17 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function ProfilePage() {
+  const [isEditing, setIsEditing] = useState(false);
+  const [name, setName] = useState("");
+  const [country, setCountry] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [favoriteMovies, setFavoriteMovies] = useState("");
+  const [favoriteMusic, setFavoriteMusic] = useState("");
+  const [hobbies, setHobbies] = useState("");
   return (
     <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
-        <MDBRow>
+        {/* <MDBRow>
           <MDBCol>
             <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
               <MDBBreadcrumbItem>
@@ -34,7 +44,7 @@ export default function ProfilePage() {
               <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>
             </MDBBreadcrumb>
           </MDBCol>
-        </MDBRow>
+        </MDBRow> */}
 
         <MDBRow>
           <MDBCol lg="4">
@@ -52,6 +62,92 @@ export default function ProfilePage() {
                   <MDBBtn>Follow</MDBBtn>
                   <MDBBtn outline className="ms-1">Message</MDBBtn>
                 </div>
+                <form onSubmit={(e) => {
+                  e.prevemtDefault();
+                  setIsEditing(!isEditing);
+                }}>
+                  <div>
+                    <label>Name:{""}
+                      {isEditing ? (
+                        <input
+                          value={name}
+                          onChange={(e) => {
+                            setName(e.target.value);
+                          }} />
+                      ) : (
+                        <b>{name}</b>
+                      )}
+                    </label>
+                  </div>
+                  <div>
+                  <label>Country:{""}
+                    {isEditing ? (
+                      <input
+                        value={country}
+                        onChange={(e) => {
+                          setCountry(e.target.value);
+                        }} />
+                    ) : (
+                      <b>{country}</b>
+                    )}
+                  </label>
+                  </div>
+                  <div>
+                  <label>Birthday:{""}
+                    {isEditing ? (
+                      <input
+                        value={birthday}
+                        onChange={(e) => {
+                          setBirthday(e.target.value);
+                        }} />
+                    ) : (
+                      <b>{birthday}</b>
+                    )}
+                  </label>
+                  </div>
+                  <div>
+                  <label>Favorite Movies:{""}
+                    {isEditing ? (
+                      <input
+                        value={favoriteMovies}
+                        onChange={(e) => {
+                          setFavoriteMovies(e.target.value);
+                        }} />
+                    ) : (
+                      <b>{favoriteMovies}</b>
+                    )}
+                  </label>
+                  </div>
+                  <div>
+                  <label>Favorite Music:{""}
+                    {isEditing ? (
+                      <input
+                        value={favoriteMusic}
+                        onChange={(e) => {
+                          setFavoriteMusic(e.target.value);
+                        }} />
+                    ) : (
+                      <b>{favoriteMusic}</b>
+                    )}
+                  </label>
+                  </div>
+                  <div>
+                  <label>Hobbies:{""}
+                    {isEditing ? (
+                      <input
+                        value={hobbies}
+                        onChange={(e) => {
+                          setHobbies(e.target.value);
+                        }} />
+                    ) : (
+                      <b>{hobbies}</b>
+                    )}
+                  </label>
+                  </div>
+                  <div>
+                  <MDBBtn outline className="ms-1" type="submit">{isEditing ? "Update" : "Edit"} Profile</MDBBtn>
+                  </div>
+                </form>
               </MDBCardBody>
             </MDBCard>
 
