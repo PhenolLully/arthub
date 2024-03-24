@@ -57,8 +57,8 @@ export default function ProfilePage() {
                   className="rounded-circle"
                   style={{ width: '150px' }}
                   fluid />
-                <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                <p className="text-muted mb-1">{name}</p>
+                <p className="text-muted mb-4">{country}</p>
                 <div className="d-flex justify-content-center mb-2">
   <MDBBtn style={{ backgroundColor: '#ac2bac', boxShadow: 'none', width: '100px', height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', disableRipple: true }}>Follow</MDBBtn>
   <MDBBtn style={{ backgroundColor: '#fafafa', boxShadow: 'none', width: '100px', height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', disableRipple: true }}outline className="ms-1">Message</MDBBtn>
