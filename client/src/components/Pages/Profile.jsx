@@ -1,5 +1,6 @@
 // SOME OF THIS IS A TEMPLATE AND WILL BE UPDATED. I have added my own code as well!
 import React, { useState } from 'react';
+import './Profile.css';
 
 import TextTruncate from '../TextTruncate/index'
 
@@ -59,9 +60,9 @@ export default function ProfilePage() {
                 <p className="text-muted mb-1">Full Stack Developer</p>
                 <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn>Follow</MDBBtn>
-                  <MDBBtn outline className="ms-1">Message</MDBBtn>
-                </div>
+  <MDBBtn style={{ backgroundColor: '#ac2bac', boxShadow: 'none', width: '100px', height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', disableRipple: true }}>Follow</MDBBtn>
+  <MDBBtn style={{ backgroundColor: '#fafafa', boxShadow: 'none', width: '100px', height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', disableRipple: true }}outline className="ms-1">Message</MDBBtn>
+</div>
                 <form onSubmit={(e) => {
                   e.preventDefault();
                   setIsEditing(!isEditing);
@@ -145,7 +146,7 @@ export default function ProfilePage() {
                     </label>
                   </div>
                   <div>
-                    <MDBBtn disableRipple outline className="ms-1" type="submit">{isEditing ? "Update" : "Edit"} Profile</MDBBtn>
+                    <MDBBtn outline className="ms-1" type="submit"style={{ backgroundColor: '#fafafa', boxShadow: 'none', width: '100px', height: '50px', justifyContent: 'center', alignItems: 'center', textAlign: 'center', disableRipple: true }}>{isEditing ? "Update" : "Edit"} Profile</MDBBtn>
                   </div>
                 </form>
               </MDBCardBody>
