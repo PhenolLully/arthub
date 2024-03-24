@@ -23,6 +23,8 @@ function App() {
         return <Home />;
       case 'profile':
         return <Profile />;
+        case 'Post':
+        return <Post />;
       default:
         return <Home />;
     }
@@ -36,6 +38,7 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link onClick={() => delayedSetPage('home')}>Home</Nav.Link>
             <Nav.Link onClick={() => delayedSetPage('profile')}>Profile</Nav.Link>
+            <Nav.Link onClick={() => delayedSetPage('Post')}>Create a Post</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
