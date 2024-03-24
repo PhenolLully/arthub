@@ -13,7 +13,11 @@ export default function Post() {
         href='#'
       >
         <MDBIcon fab icon='instagram' />
-        <span className="plus-sign">+</span>
+        <a style = {{
+          color: 'white',
+        }}href="/Post">
+            <span className="plus-sign">+</span>
+        </a>
       </MDBBtn>
     </div>
     <div>
