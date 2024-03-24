@@ -24,7 +24,7 @@ export default function UploadImage() {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h1 style={{ color: "white", fontSize: '5em', marginBottom: '20px' }}>Create a Post</h1>
             <div style={{ marginBottom: '20px' }}>
-                <label htmlFor="title" style={{ fontSize: '2em', marginRight: '10px' }}>Title:</label>
+                <label htmlFor="title" style={{ fontSize: '2.5em', marginRight: '10px' }}>Title:</label>
                 <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} style={{ fontSize: '1.2em', padding: '5px' }} />
             </div>
             <div style={{ marginBottom: '20px' }}>
