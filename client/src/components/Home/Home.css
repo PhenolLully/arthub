@@ -1,0 +1,11 @@
+.post-btn-container {
+    position: fixed;
+    bottom: 100px; /* Adjust this value to change the distance from the bottom */
+    right: 100px; /* Adjust this value to change the distance from the right */
+    z-index: 1000; /* Ensure the button is above other content */
+  }
+  
+  .plus-sign {
+    position: absolute;
+     /* Adjust this value to change the horizontal position */
+  }
