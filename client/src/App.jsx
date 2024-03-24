@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Home from './components/Home/Home'; // Import the Home component
 import Profile from './components/Pages/Profile'; // Import the Profile component
-
+import Post from './components/Post/Post'; // Import the Post component
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,7 +23,7 @@ function App() {
         return <Home />;
       case 'profile':
         return <Profile />;
-        case 'Post':
+      case 'post':
         return <Post />;
       default:
         return <Home />;
@@ -38,7 +38,7 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link onClick={() => delayedSetPage('home')}>Home</Nav.Link>
             <Nav.Link onClick={() => delayedSetPage('profile')}>Profile</Nav.Link>
-            <Nav.Link onClick={() => delayedSetPage('Post')}>Create a Post</Nav.Link>
+            <Nav.Link onClick={() => delayedSetPage('post')}>Create a Post</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
