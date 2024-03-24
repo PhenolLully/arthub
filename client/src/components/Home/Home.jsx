@@ -1,9 +1,10 @@
 import React from 'react';
 import { MDBBtn, MDBIcon } from 'mdb-react-ui-kit';
-import './Home.css'; // Assuming you have a Post.css file for styling
+import './Home.css'; // Assuming you have a Home.css file for styling
 
 export default function Post() {
   return (
+    <div>
     <div className="post-btn-container">
       <MDBBtn
         size='lg'
@@ -14,6 +15,11 @@ export default function Post() {
         <MDBIcon fab icon='instagram' />
         <span className="plus-sign">+</span>
       </MDBBtn>
+    </div>
+    <div>
+      <h1 className="Feed">Your feed</h1>
+      {/* Add your post information here */}
+    </div>
     </div>
   );
 }

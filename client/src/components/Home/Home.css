@@ -9,3 +9,12 @@
     position: absolute;
      /* Adjust this value to change the horizontal position */
   }
+
+  .Feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    color : #3d3632;
+  }
