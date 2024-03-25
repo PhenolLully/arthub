@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently \"npm run start-client\" \"npm run start-server\"",
+    "start-client": "cd client && npm start",
+    "start-server": "cd server && npm start",
+    "install": "cd client && npm install && cd .. && cd server && npm install && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  }
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -13,5 +17,8 @@
     "bootstrap": "^5.3.3",
     "mdb-react-ui-kit": "^7.2.0",
     "react-bootstrap": "^2.10.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
