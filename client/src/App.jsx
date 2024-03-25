@@ -2,33 +2,12 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Home from './components/Home/Home'; // Import the Home component
-import Profile from './components/Pages/Profile'; // Import the Profile component
-import Post from './components/Post/Post'; // Import the Post component
-
+import {Outlet } from 'react-router-dom'; // Import the Outlet component
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [page, setPage] = useState('home');
+  
 
-  const delayedSetPage = (newPage) => {
-    setTimeout(() => {
-      setPage(newPage);
-    }, 500); // Delay of 1 second (1000 milliseconds)
-  };
-
-  const renderPage = () => {
-    switch (page) {
-      case 'home':
-        return <Home />;
-      case 'profile':
-        return <Profile />;
-      case 'post':
-        return <Post />;
-      default:
-        return <Home />;
-    }
-  };
 
   return (
     <>
@@ -36,15 +15,15 @@ function App() {
         <Container>
           <Navbar.Brand>ArtHub</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={() => delayedSetPage('home')}>Home</Nav.Link>
-            <Nav.Link onClick={() => delayedSetPage('profile')}>Profile</Nav.Link>
-            <Nav.Link onClick={() => delayedSetPage('post')}>Create a Post</Nav.Link>
+            <Nav.Link href = "/">Home</Nav.Link>
+            <Nav.Link href = "/pages">Profile</Nav.Link>
+            <Nav.Link href = "/post">Create a Post</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
       
-      {renderPage()} {/* Render the current page based on the state */}
-      
+      <Outlet />
+
       <footer>
         {/* Add your footer content here */}
       </footer>

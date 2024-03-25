@@ -3,8 +3,6 @@ import { ADD_POST, ADD_TITLE, ADD_IMAGE, ADD_DESCRIPTION} from '../../utils/acti
 
 export default function UploadImage() {
   
-   
-    
     const [title, setTitle] = useState('');
     const [images, setImages] = useState([]);
     const [description, setDescription] = useState('');
@@ -24,6 +22,9 @@ export default function UploadImage() {
         }
     }
     
+    function submitPost() {
+        
+    }
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -46,18 +47,7 @@ export default function UploadImage() {
                 <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} style={{ fontSize: '1.2em', padding: '5px', minHeight: '100px', minWidth: '300px' }}></textarea>
             </div>
             <div>
-            <button
-              onClick={() =>
-                dispatch({
-                  type: ADD_POST,
-                  payload: {
-                    title: setTitle,
-                    image: setImagePreview,
-                    description: setDescription,
-                  },
-                })
-              }
-            >
+            <button onClick = {submitPost}>
               Submit Post
             </button>
             </div>

@@ -5,10 +5,7 @@
     z-index: 1000; /* Ensure the button is above other content */
   }
   
-  .plus-sign {
-    position: absolute;
-     /* Adjust this value to change the horizontal position */
-  }
+  
 
   .Feed {
     display: flex;
