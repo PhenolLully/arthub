@@ -6,7 +6,6 @@ const resolvers = require('./schema/resolvers');
 const connectDB = require('./config/db');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
-const cloudinary = require('cloudinary').v2;
 const bodyParser = require('body-parser'); 
 
 require('dotenv').config();

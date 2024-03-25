@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { ADD_POST, ADD_TITLE, ADD_IMAGE, ADD_DESCRIPTION} from '../../utils/actions';
 
 export default function UploadImage() {
+  
     const [title, setTitle] = useState('');
     const [images, setImages] = useState([]);
     const [description, setDescription] = useState('');
@@ -19,6 +21,10 @@ export default function UploadImage() {
             setImagePreview('');
         }
     }
+    
+    function submitPost() {
+        
+    }
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -28,7 +34,7 @@ export default function UploadImage() {
                 <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} style={{ fontSize: '1.2em', padding: '5px' }} />
             </div>
             <div style={{ marginBottom: '20px' }}>
-                <label htmlFor="image" style={{ fontSize: '2em', marginRight: '10px' }}>Upload Image:</label>
+                <label htmlFor="image" style={{ fontSize: '2em', marginRight: '10px', }}>Upload Image:</label>
                 <input type="file" id="image" accept="image/*" onChange={onImageChange} style={{ fontSize: '1.2em', padding: '5px' }} />
             </div>
             {imagePreview && (
@@ -39,6 +45,11 @@ export default function UploadImage() {
             <div style={{ marginBottom: '20px' }}>
                 <label htmlFor="description" style={{ fontSize: '2em', marginRight: '10px' }}>Description:</label>
                 <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} style={{ fontSize: '1.2em', padding: '5px', minHeight: '100px', minWidth: '300px' }}></textarea>
+            </div>
+            <div>
+            <button onClick = {submitPost}>
+              Submit Post
+            </button>
             </div>
         </div>
     );

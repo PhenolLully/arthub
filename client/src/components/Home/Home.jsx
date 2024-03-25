@@ -1,6 +1,7 @@
 import React from 'react';
 import { MDBBtn, MDBIcon } from 'mdb-react-ui-kit';
 import './Home.css'; // Assuming you have a Home.css file for styling
+import {Link} from 'react-router-dom';
 
 export default function Post() {
   return (
@@ -13,11 +14,11 @@ export default function Post() {
         href='#'
       >
         <MDBIcon fab icon='instagram' />
-        <a style = {{
-          color: 'white',
-        }}href="/Post">
+
+        <Link to="/post">
             <span className="plus-sign">+</span>
-        </a>
+        </Link>
+
       </MDBBtn>
     </div>
     <div>
