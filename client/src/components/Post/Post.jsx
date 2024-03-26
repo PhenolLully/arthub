@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ADD_POST, ADD_TITLE, ADD_IMAGE, ADD_DESCRIPTION} from '../../utils/actions';
+import { ADD_PICTURE } from '../../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 export default function UploadImage() {
   
@@ -7,6 +8,8 @@ export default function UploadImage() {
     const [images, setImages] = useState([]);
     const [description, setDescription] = useState('');
     const [imagePreview, setImagePreview] = useState('');
+
+    const [addPicture, { loading }] = useMutation(ADD_PICTURE);
 
     function onImageChange(e) {
         const chosenImage = e.target.files[0];
@@ -22,8 +25,16 @@ export default function UploadImage() {
         }
     }
     
-    function submitPost() {
-        
+    async function submitPost() {
+        try {
+            // Execute the addPost mutation
+            const { data } = await addPicture({
+                variables: { title, images, description },
+            });
+            console.log('Post added:', data); // Handle success response as needed
+        } catch (error) {
+            console.error('Error adding post:', error); // Handle error
+        }
     }
 
     return (
