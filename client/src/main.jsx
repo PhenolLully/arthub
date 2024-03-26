@@ -9,6 +9,7 @@ import App from './App.jsx'
 import Home from './components/Home/Home.jsx'
 import Profile from './components/Pages/Profile.jsx'
 import Post from './components/Post/Post.jsx'
+import Login from './components/Login/Login.jsx'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: 'post',
         element: <Post />,
       },
+      {
+        path: 'login',
+        element: <Login />,
+      }
     ],
   },
 ]);

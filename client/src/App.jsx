@@ -4,13 +4,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Outlet } from 'react-router-dom'; // Import the Outlet component
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { ApolloProvider } from '@apollo/client';
+import client from './graphql/client';
 function App() {
   
 
 
   return (
-    <>
+    <ApolloProvider client={{client}}>
       <Navbar bg="dark" variant="dark" className="text-center">
         <Container>
           <Navbar.Brand>ArtHub</Navbar.Brand>
@@ -27,7 +28,8 @@ function App() {
       <footer>
         {/* Add your footer content here */}
       </footer>
-    </>
+
+</ApolloProvider>
   );
 }
 
