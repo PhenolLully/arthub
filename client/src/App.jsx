@@ -19,6 +19,7 @@ function App() {
             <Nav.Link href = "/">Home</Nav.Link>
             <Nav.Link href = "/pages">Profile</Nav.Link>
             <Nav.Link href = "/post">Create a Post</Nav.Link>
+            <Nav.Link href = "/login">Login</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
