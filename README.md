@@ -25,3 +25,8 @@ Note: Make sure to rename your .env file to fit your mongodb fields
 - [Todd Fowler](https://github.com/tyfowler1)
 - [Brandon Webb](https://github.com/Bmwebb215)
 - [Danny Saravia](https://github.com/Dannysaravia001)
+
+## Sources
+
+- Bootcamp tutor, Jose Lopez
+- Bootcamp tutor, 

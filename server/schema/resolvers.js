@@ -1,48 +1,51 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Picture = require('../models/Picture');
 const Comment = require('../models/Comment');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
-const createToken = (user, secret, expiresIn) => {
-  const { id, email, username } = user;
-  return jwt.sign({ id, email, username }, secret, { expiresIn });
-};
 
 const resolvers = {
   Query: {
     users: async () => await User.find({}),
-    user: async (_, { id }) => await User.findById(id),
+    user: async (_, args, context) => {
+      if (context.user){
+        const userData = await User.findOne(
+          { _id: context.user._id}
+        )
+        return userData
+      }
+    },
     pictures: async () => await Picture.find({}).populate('user').populate('comments'),
     picture: async (_, { id }) => await Picture.findById(id).populate('user').populate('comments'),
   },
   Mutation: {
-    addUser: async (_, { username, email, password }) => {
-      const user = await User.findOne({ email });
-      if (user) {
-        throw new Error('User already exists');
-      }
-      const hashedPassword = await bcrypt.hash(password, 12);
-      const newUser = new User({ username, email, password: hashedPassword });
-      await newUser.save();
-      return newUser;
+    addUser: async (_, args) => {
+      const user = await User.create(args)
+      const token =signToken(user)
+      return {token, user}
+
     },
-    login: async (_, { email, password }) => {
+    login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
+
       if (!user) {
-        throw new Error('User not found');
+          throw AuthenticationError;
       }
-      const isValidPassword = await bcrypt.compare(password, user.password);
-      if (!isValidPassword) {
-        throw new Error('Invalid password');
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+          throw AuthenticationError;
       }
-      const token = createToken(user, process.env.JWT_SECRET, '1h');
+
+      const token = signToken(user);
+
       return { token, user };
-    },
+  },
     addPicture: async (_, { userId, imageUrl, title, description }) => {
       const newPicture = new Picture({ user: userId, imageUrl, title, description });
       await newPicture.save();
-      return newPicture.populate('user'); 
+      return newPicture.populate('user');
     },
     likePicture: async (_, { pictureId, userId }) => {
       const picture = await Picture.findById(pictureId);

@@ -10,10 +10,11 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-"dependencies": {
+  "dependencies": {
     "@apollo/client": "^3.9.8",
     "bootstrap": "^5.3.3",
     "graphql": "^16.8.1",
+    "jwt-decode": "^3.1.2",
     "mdb-react-ui-kit": "^7.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
