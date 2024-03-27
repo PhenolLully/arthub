@@ -11,6 +11,7 @@ import Profile from './components/Pages/Profile.jsx'
 import Post from './components/Post/Post.jsx'
 import Login from './components/Pages/Login.jsx'
 import Signup from './components/Pages/Signup.jsx'
+import auth from './utils/auth.js'
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'post',
-        element: <Post />,
+        element: auth.loggedIn() ? <Post />: <Login />,
       },
       {
         path: 'login',

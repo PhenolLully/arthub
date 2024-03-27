@@ -1,12 +1,37 @@
-const mongoose = require('mongoose');
+const {Schema, model} = require('mongoose');
+const commentSchema = require('./Comment');
+const dateFormat =  require('../utils/dateFormat')
 
-const pictureSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  imageUrl: { type: String, required: true },
+const pictureSchema = new Schema({
+  imageUrl: { 
+    type: String, 
+    required: true 
+  },
   title: String,
   description: String,
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  likeCount: { type: Number, default: 0 },
-}, { timestamps: true });
+  username: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (date)=> dateFormat(date)
+    },
+  likes: [
+    { 
+    type: Schema.Types.ObjectId, 
+    ref: 'User' 
+  }
+],
+comments: [commentSchema]
 
-module.exports = mongoose.model('Picture', pictureSchema);
+}, { 
+  toJSON: {
+    virtuals: true,
+    getters: true
+  }
+ });
+
+ pictureSchema.virtual('likeCount').get(function(){
+  return this.likes.length
+ })
+
+module.exports = model('Picture', pictureSchema);

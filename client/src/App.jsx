@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+
 import { MDBBtn, MDBIcon } from 'mdb-react-ui-kit';
 import { Outlet } from 'react-router-dom'; // Import the Outlet component
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { GET_USER } from './utils/queries'
 
 import {
   ApolloClient,
@@ -16,8 +16,8 @@ import { setContext } from '@apollo/client/link/context';
 
 
 import { Link } from 'react-router-dom';
+import Navigation from './components/Nav';
 
-import auth from './utils/auth'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -37,37 +37,20 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+
+
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-
 function App() {
-
-
 
   return (
     <ApolloProvider client={client}>
-      <Navbar bg="dark" variant="dark" className="text-center">
-        <Container>
-          <Navbar.Brand><Nav.Link href="/">ArtHub</Nav.Link></Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/pages">Profile</Nav.Link>
-            <Nav.Link href="/post">Create a Post</Nav.Link>
-            {auth.loggedIn() ? (<Nav.Link onClick={auth.logout} >Logout</Nav.Link>) : (
-              <>
-                <Nav.Link href="/login">Login</Nav.Link>
-                <Nav.Link href="/signup">Sign Up</Nav.Link>
-              </>
-            )}
-
-            <Nav.Link href="/donate">Support Our Website!</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      
+     
       <div className="post-btn-container">
         <MDBBtn
           size='lg'
@@ -83,7 +66,9 @@ function App() {
 
         </MDBBtn>
       </div>
+<Navigation />
       <Outlet />
+      
 
       <footer>
         {/* Add your footer content here */}

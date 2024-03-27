@@ -1,6 +1,4 @@
-const User = require('../models/User');
-const Picture = require('../models/Picture');
-const Comment = require('../models/Comment');
+const { User, Picture} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 
@@ -8,44 +6,55 @@ const resolvers = {
   Query: {
     users: async () => await User.find({}),
     user: async (_, args, context) => {
-      if (context.user){
+      if (context.user) {
         const userData = await User.findOne(
-          { _id: context.user._id}
-        )
+          { _id: context.user._id }
+        ).populate('posts')
         return userData
       }
     },
-    pictures: async () => await Picture.find({}).populate('user').populate('comments'),
-    picture: async (_, { id }) => await Picture.findById(id).populate('user').populate('comments'),
+    pictures: async () => await Picture.find({}),
+    picture: async (_, { id }) => await Picture.findById(id)
   },
   Mutation: {
     addUser: async (_, args) => {
       const user = await User.create(args)
-      const token =signToken(user)
-      return {token, user}
+      const token = signToken(user)
+      return { token, user }
 
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-          throw AuthenticationError;
+        throw AuthenticationError;
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-          throw AuthenticationError;
+        throw AuthenticationError;
       }
 
       const token = signToken(user);
 
       return { token, user };
-  },
-    addPicture: async (_, { userId, imageUrl, title, description }) => {
-      const newPicture = new Picture({ user: userId, imageUrl, title, description });
-      await newPicture.save();
-      return newPicture.populate('user');
+    },
+    addPicture: async (_, args, context) => {
+      if (context.user) {
+      const pictureData =  await Picture.create({...args, username: context.user.username});
+
+      const updateUser = await User.findOneAndUpdate(
+        {_id: context.user._id},
+        {$push: {posts: pictureData._id}},
+        {new: true}
+      )
+
+      return updateUser
+      }
+
+      throw AuthenticationError
+
     },
     likePicture: async (_, { pictureId, userId }) => {
       const picture = await Picture.findById(pictureId);
