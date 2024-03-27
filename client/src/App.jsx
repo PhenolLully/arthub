@@ -71,7 +71,7 @@ function App() {
       
 
       <footer>
-        {/* Add your footer content here */}
+       {/*<p style={{color: 'black', marginTop:'80px'}}>&copy; Best Group 2024</p>*/}
       </footer>
 
     </ApolloProvider>

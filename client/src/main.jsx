@@ -12,6 +12,7 @@ import Post from './components/Post/Post.jsx'
 import Login from './components/Pages/Login.jsx'
 import Signup from './components/Pages/Signup.jsx'
 import auth from './utils/auth.js'
+import Donate from './components/Pages/Donate.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: 'signup',
         element: <Signup />
+      },
+      {
+        path: 'donate',
+        element: <Donate />
+      },
+      {
+        path: '*',
+        element: <h1>404 Not Found</h1>
       }
     ],
   },

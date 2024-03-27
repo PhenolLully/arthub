@@ -62,7 +62,8 @@ export default function UploadImage({ user }) {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h1 style={{ color: "white", fontSize: '5em', marginBottom: '20px' }}>Create a Post</h1>
+            <h1 style={{ color: "#fcd2a8", fontSize: '5em', marginBottom: '20px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Create a Post</h1>
+
             <div style={{ marginBottom: '20px' }}>
                 <label 
                 htmlFor="title" 
