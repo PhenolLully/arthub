@@ -14,7 +14,7 @@ const resolvers = {
       }
     },
     pictures: async () => await Picture.find({}),
-    picture: async (_, { id }) => await Picture.findById(id)
+    picture: async (_, { _id }) => await Picture.findById(_id)
   },
   Mutation: {
     addUser: async (_, args) => {

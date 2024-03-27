@@ -15,12 +15,12 @@ export default function Home() {
       <div>
         <h1 className="Feed">Your feed</h1>
         {/* Add your post information here */}
-        <div>
+        <div className='row '>
           {pictureData?.map((pic) => (
-            <div>
+            <div className='col-md-3 text-center border mx-2'>
               <img src={pic.imageUrl} alt="" width={300} />
-              <h2>{pic.title}</h2>
-              <p>{pic.description}</p>
+              <h2><a href={`/singlepost/${pic._id}`}>{pic.title}</a></h2>
+
               <p>{pic.username} on {pic.createdAt} </p>
             </div>
           ))}
