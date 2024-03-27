@@ -1,17 +1,62 @@
-.post-btn-container {
-    position: fixed;
-    bottom: 100px; /* Adjust this value to change the distance from the bottom */
-    right: 100px; /* Adjust this value to change the distance from the right */
-    z-index: 1000; /* Ensure the button is above other content */
-  }
-  
-  
+/* Styles for elements within the .content-wrapper class */
+.content-wrapper .Feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  color: #3d3632;
+}
 
-  .Feed {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    color : #3d3632;
-  }
+.content-wrapper .container {
+  width: 100%;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(92, 42, 42, 0.5), transparent),
+}
+
+.content-wrapper h1 {
+  font-size: 120px;
+  text-transform: uppercase;
+  font-family: 'Gambetta', serif;
+  letter-spacing: -3px;
+  transition: 700ms ease;
+  font-variation-settings: "wght" 311;
+  margin-bottom: 0.8rem;
+  color: #ffc58cd7;
+  outline: none;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.content-wrapper h1:hover {
+  font-variation-settings: "wght" 582;
+  letter-spacing: 1px;
+}
+
+.content-wrapper p {
+  font-size: 1.2em;
+  line-height: 150%;
+  text-align: center;
+  color: rgb(10, 139, 75);
+  letter-spacing: .5px;
+}
+
+/* Styles for the post button container */
+.post-btn-container {
+  position: fixed;
+  bottom: 100px; /* Adjust this value to change the distance from the bottom */
+  right: 100px; /* Adjust this value to change the distance from the right */
+  z-index: 1000; /* Ensure the button is above other content */
+}
+
+h2 {
+  font-size: 2.5em;
+  font-family: 'Gambetta', serif;
+  color: #3d3632;
+  text-align: center;
+  margin-top: 50px;
+}
