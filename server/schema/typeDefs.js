@@ -1,28 +1,26 @@
 const typeDefs = `
   type User {
-    id: ID!
+    _id: ID!
     username: String!
     email: String!
-    pictures: [Picture!]!
+    posts: [Picture]
   }
 
   type Picture {
-    id: ID!
-    user: User!
+    _id: ID!
     imageUrl: String!
     title: String
     description: String
-    likes: [User!]!
-    comments: [Comment!]!
-    createdAt: String!
+    comments: [Comment]
+    createdAt: String
+    username: String
   }
 
   type Comment {
-    id: ID!
-    picture: Picture!
-    user: User!
-    text: String!
-    createdAt: String!
+    commentId: ID
+    user: String
+    text: String
+    createdAt: String
   }
 
 
@@ -34,17 +32,17 @@ const typeDefs = `
   type Query {
     users: [User]
     user: User
-    pictures: [Picture!]!
-    picture(id: ID!): Picture
-    comments(pictureId: ID!): [Comment!]!
+    pictures: [Picture]
+    picture(_id: ID!): Picture
+    comments(pictureId: ID!): [Comment]
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPicture(userId: ID!, imageUrl: String!, title: String, description: String): Picture!
+    addPicture(imageUrl: String!, title: String, description: String): User
     likePicture(pictureId: ID!, userId: ID!): Picture!
-    addComment(pictureId: ID!, userId: ID!, text: String!): Comment!
+    addComment(text: String!): Comment!
   }
 `;
 

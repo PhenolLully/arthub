@@ -1,41 +1,43 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('sk_test_51Oz1bPP6VzehrbIAuaaLp0t6T91cBPavYGZcKJQzE4H23A4rYygmJkSkhGuvJDqYc8ts1LEph8XkEhzBqykqz4h400SmCcGZqG');
+const stripePromise = loadStripe('pk_test_51Oz1bPP6VzehrbIAcPLc7c5WLRTcynqRAlC0kyguyxvpIAgNzccZNL8U9kjfTsa09wvzEXdhIpqVCmzpLrmaoHXJ007Tlkyz7N');
 
-const Donate = () => {
-    const [amount, setAmount] = useState(0);
-
-    const handleDonate = async () => {
-        // Dummy session ID for demonstration
-        const session = { id: 'dummy-session-id' };
-        const stripe = await stripePromise;
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id,
+const DonationButton = ({ itemID, ammount }) => {
+    const handleClick = async (event) => {
+      const stripe = await stripePromise;
+      stripe
+        .redirectToCheckout({
+          lineItems: [{ price: itemID, quantity: 1 }],
+          mode: "payment",
+          successUrl: window.location.protocol + "//localhost:3000/success",
+          cancelUrl: window.location.protocol + "//localhost:3000",
+          submitType: "donate",
+        })
+        .then(function (result) {
+          if (result.error) {
+            console.log(result);
+          }
         });
-        if (result.error) {
-            console.error(result.error.message);
-        } else {
-            // Show a message or alert that the payment is not actually processed
-            alert('This is a demo. Payment not processed.');
-        }
-    };
-
-    return (
-        <div className="donate-container">
-            <h1>Donate</h1>
-            <div className="donation-amount">
-                <label htmlFor="amount">Amount:</label>
-                <input
-                    type="number"
-                    id="amount"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                />
-            </div>
-            <button onClick={handleDonate}>Donate</button>
-        </div>
+    };  return (
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+        onClick={handleClick}
+      >
+        Donate {ammount}$
+      </button>
     );
-};
-
-export default Donate;
+  };
+  
+  export default function Donate() {
+    return (
+      <>
+        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <DonationButton
+            ammount={"5.00"}
+            itemID="price_1Oz3gGP6VzehrbIA9GGkKwMP"
+          ></DonationButton>
+        </div>
+      </>
+    );
+  }

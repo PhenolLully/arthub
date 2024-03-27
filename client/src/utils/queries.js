@@ -31,48 +31,29 @@ export const GET_USER = gql`
 `;
 
 export const GET_PICTURES = gql`
-  query GetPictures {
-    pictures {
-      id
-      imageUrl
-      title
-      description
-      likes {
-        id
-        username
-      }
-      comments {
-        id
-        text
-      }
-      createdAt
-    }
+query pictures {
+  pictures {
+    _id
+    createdAt
+    description
+    imageUrl
+    title
+    username
   }
+}
 `;
 
 export const GET_PICTURE = gql`
-  query GetPicture($pictureId: ID!) {
-    picture(id: $pictureId) {
-      id
-      imageUrl
-      title
-      description
-      likes {
-        id
-        username
-      }
-      comments {
-        id
-        text
-        user {
-          id
-          username
-        }
-        createdAt
-      }
-      createdAt
-    }
+query Picture($id: ID!) {
+  picture(_id: $id) {
+    _id
+    createdAt
+    description
+    imageUrl
+    title
+    username
   }
+}
 `;
 
 export const GET_COMMENTS = gql`

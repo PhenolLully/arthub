@@ -1,9 +1,18 @@
-const mongoose = require('mongoose');
+const {Schema, Types} = require('mongoose');
+const dateFormat =  require('../utils/dateFormat')
 
-const commentSchema = new mongoose.Schema({
-  picture: { type: mongoose.Schema.Types.ObjectId, ref: 'Picture', required: true },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+const commentSchema = new Schema({
+  commentId: {
+    type: Schema.Types.ObjectId,
+    default: ()=> new Types.ObjectId()
+  },
+  user: String,
   text: { type: String, required: true },
-}, { timestamps: true });
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (date)=> dateFormat(dateFormat)
+  }
+});
 
-module.exports = mongoose.model('Comment', commentSchema);
+module.exports = commentSchema

@@ -11,7 +11,10 @@ import Profile from './components/Pages/Profile.jsx'
 import Post from './components/Post/Post.jsx'
 import Login from './components/Pages/Login.jsx'
 import Signup from './components/Pages/Signup.jsx'
+import auth from './utils/auth.js'
 import Donate from './components/Pages/Donate.jsx';
+import Success from './components/Pages/Success.jsx';
+import SinglePost from './components/Pages/SinglePost.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'post',
-        element: <Post />,
+        element: auth.loggedIn() ? <Post />: <Login />,
       },
       {
         path: 'login',
@@ -41,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: 'donate',
         element: <Donate />
+      },
+      {
+        path: 'success', 
+        element: <Success />
+      },
+      {
+        path: 'singlepost/:id', 
+        element: <SinglePost />
       },
       {
         path: '*',

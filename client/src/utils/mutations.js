@@ -5,7 +5,7 @@ mutation addUser($username: String!, $email: String!, $password: String!) {
   addUser(username: $username, email: $email, password: $password) {
     token
     user {
-      id
+      _id
       email
       username
     }
@@ -18,7 +18,7 @@ mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     token
     user {
-      id
+      _id
       email
       username
     }
@@ -27,14 +27,17 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const ADD_PICTURE = gql`
-  mutation AddPicture($userId: ID!, $imageUrl: String!, $title: String, $description: String) {
-    addPicture(userId: $userId, imageUrl: $imageUrl, title: $title, description: $description) {
-      id
-      imageUrl
-      title
-      description
+mutation addPicture($imageUrl: String!, $title: String, $description: String) {
+  addPicture(imageUrl: $imageUrl, title: $title, description: $description) {
+    _id
+    email
+    username
+    posts {
+      _id
+
     }
   }
+}
 `;
 
 export const LIKE_PICTURE = gql`
